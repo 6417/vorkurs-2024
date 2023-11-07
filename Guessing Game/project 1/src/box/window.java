@@ -28,7 +28,7 @@ public class window {
             }
             String currentText = this.spiel.getHistory();
             historyTextArea.setText(currentText);
-            textField.setText(" ");
+            textField.setText("");
         } catch (NumberFormatException e) {
             resultLabel.setText("Please enter a valid number.");
         }
