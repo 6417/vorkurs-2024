@@ -2,5 +2,5 @@
 ---
 ## Team
 
-- [https://github.com/amadeus7756](Amadeus7756)
-- [https://github.com/btemperli](btemperli)
+- [Amadeus7756](https://github.com/Amadeus7756)
+- [btemperli](https://github.com/btemperli)
