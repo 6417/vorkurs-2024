@@ -54,7 +54,7 @@ public class window {
         c.gridy = 0;
         frame.add(textField, c);
 
-        c.gridx = 0;
+        c.gridx = 1;
         frame.add(guessButton, c);
 
         c.gridx = 0;
