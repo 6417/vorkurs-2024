@@ -28,11 +28,6 @@ public class Game {
     }
 
     public int checkGuess(int userGuess) {
-        /*
-         * String currentText = historyTextArea.getText();
-         * String updatedText = userGuess + "\n" + currentText;
-         * historyTextArea.setText(updatedText);
-         */
         this.history.add(userGuess);
         if (userGuess == randomNumber) {
             return this.GUESSCORRECT;

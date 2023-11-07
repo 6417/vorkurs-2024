@@ -16,7 +16,6 @@ public class window {
         try {
             int userGuess = Integer.parseInt(textField.getText());
             int result = this.spiel.checkGuess(userGuess);
-            System.out.println(result);
             guessCount++; // Erhöhen Sie die Anzahl der Versuche
             if (result == this.spiel.GUESSCORRECT) {
                 resultLabel.setText("Congratulations! You guessed the correct number in " + guessCount + " tries.");
@@ -55,7 +54,7 @@ public class window {
         c.gridy = 0;
         frame.add(textField, c);
 
-        c.gridx = 1;
+        c.gridx = 0;
         frame.add(guessButton, c);
 
         c.gridx = 0;
