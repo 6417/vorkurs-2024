@@ -16,4 +16,17 @@ public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
   }
+  public static class Drive{
+    public static boolean isEnabeld = true;
+    public static double deadzoneX = 0.1;
+    public static double deadzoneY = 0.1;
+    public static final int joystickPort = 0;
+
+    public static class Motors{
+      public static final int rechtsVorne = 10;
+      public static final int rechtsHinten = 11;
+      public static final int linksVorne = 12;
+      public static final int linksHinten = 13;
+    }
+  }
 }
