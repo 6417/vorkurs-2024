@@ -6,3 +6,5 @@
 - [btemperli](https://github.com/btemperli)
 - [Eragon24z](https://github.com/Eragon24z)
 - [fabianBlesi](https://github.com/fabianBlesi)
+- [lrshsl](https://github.com/lrshsl)
+- [laurin-hefti](https://github.com/laurin-hefti)
