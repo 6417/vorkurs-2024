@@ -89,7 +89,11 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
-    drive_subsystem.periodic();
+    if (Constants.Drive.isEnabeld){
+      drive_subsystem.fahren();
+    } else{
+      drive_subsystem.doNothing();
+    }
   }
 
   @Override
