@@ -37,5 +37,6 @@ public class JointArm extends SubsystemBase {
             joint_movement = 0.0;
         }
         armMotorLinks.set(joint_movement);
+        armMotorRechts.set(-joint_movement);
     }
 }
