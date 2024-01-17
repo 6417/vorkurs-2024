@@ -14,19 +14,19 @@ import frc.robot.Constants;
 
 public class Drive extends SubsystemBase {
 
-  private TalonFX m_rightMasterMotor = new TalonFX(Constants.Drive.Motors.rechtsVorne);
-  private TalonFX m_leftMasterMotor = new TalonFX(Constants.Drive.Motors.linksVorne);
-  private TalonFX m_rightSklavenMotor = new TalonFX(Constants.Drive.Motors.rechtsHinten);
-  private TalonFX m_leftSklavenMotor = new TalonFX(Constants.Drive.Motors.linksHinten);
+  private TalonFX m_rightMasterMotor = new TalonFX(Constants.Drive.rechtsVorne);
+  private TalonFX m_leftMasterMotor = new TalonFX(Constants.Drive.linksVorne);
+  private TalonFX m_rightSklavenMotor = new TalonFX(Constants.Drive.rechtsHinten);
+  private TalonFX m_leftSklavenMotor = new TalonFX(Constants.Drive.linksHinten);
   //normalerweise auf rightMasterMotor
   private final DifferentialDrive m_robotDrive = new DifferentialDrive(m_leftMasterMotor, m_rightMasterMotor);
 
-  Joystick _joystick = new Joystick(Constants.Drive.joystickPort);
+  Joystick _joystick = new Joystick(Constants.joystickPort);
 
   public Drive() {
 
-    m_rightMasterMotor.setControl(new Follower(Constants.Drive.Motors.rechtsHinten, false));
-    m_leftMasterMotor.setControl(new Follower(Constants.Drive.Motors.linksHinten, false));
+    m_rightMasterMotor.setControl(new Follower(Constants.Drive.rechtsHinten, false));
+    m_leftMasterMotor.setControl(new Follower(Constants.Drive.linksHinten, false));
   }
 
   public void periodic() {
@@ -46,10 +46,8 @@ public class Drive extends SubsystemBase {
     double forw = -_joystick.getRawAxis(1);
     double turn = _joystick.getRawAxis(0);
 
-    forw = deadzone(forw, Constants.Drive.deadzoneY);
-    turn = deadzone(turn, Constants.Drive.deadzoneX);
-    System.out.println(forw);
-    System.out.println(turn);
+    forw = deadzone(forw, Constants.deadzoneY);
+    turn = deadzone(turn, Constants.deadzoneX);
 
     m_robotDrive.tankDrive((forw+turn)/2, (forw-turn)/2);
   }
