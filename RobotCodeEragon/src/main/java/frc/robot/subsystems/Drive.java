@@ -4,35 +4,33 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.TalonFXControlMode;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix6.controls.Follower;
+import com.ctre.phoenix6.hardware.TalonFX;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Drive extends SubsystemBase {
-  // private WPI_TalonFX m_rightMasterMotor = new WPI_TalonFX(Constants.Drive.Motors.rechtsVorne);
-  private WPI_TalonFX m_leftMasterMotor = new WPI_TalonFX(Constants.Drive.Motors.rechtsHinten);
-  private WPI_TalonFX m_rightSklavenMotor = new WPI_TalonFX(Constants.Drive.Motors.linksVorne);
-  private WPI_TalonFX m_leftSklavenMotor = new WPI_TalonFX(Constants.Drive.Motors.linksHinten);
+
+  private TalonFX m_rightMasterMotor = new TalonFX(Constants.Drive.Motors.rechtsVorne);
+  private TalonFX m_leftMasterMotor = new TalonFX(Constants.Drive.Motors.linksVorne);
+  private TalonFX m_rightSklavenMotor = new TalonFX(Constants.Drive.Motors.rechtsHinten);
+  private TalonFX m_leftSklavenMotor = new TalonFX(Constants.Drive.Motors.linksHinten);
   //normalerweise auf rightMasterMotor
-  private final DifferentialDrive m_robotDrive = new DifferentialDrive(m_leftMasterMotor, m_rightSklavenMotor);
+  private final DifferentialDrive m_robotDrive = new DifferentialDrive(m_leftMasterMotor, m_rightMasterMotor);
 
   Joystick _joystick = new Joystick(Constants.Drive.joystickPort);
 
   public Drive() {
-    // m_rightMasterMotor.configFactoryDefault();
-    m_leftMasterMotor.configFactoryDefault();
-    m_rightSklavenMotor.configFactoryDefault();
-    m_leftSklavenMotor.configFactoryDefault();
 
-    // m_rightSklavenMotor.follow(m_rightMasterMotor);
-    m_leftSklavenMotor.follow(m_leftMasterMotor);
+    m_rightMasterMotor.setControl(new Follower(Constants.Drive.Motors.rechtsHinten, false));
+    m_leftMasterMotor.setControl(new Follower(Constants.Drive.Motors.linksHinten, false));
   }
 
   public void periodic() {
-    //normalerweise auf rightMasterMotor
+    // normalerweise auf rightMasterMotor
     // m_rightMasterMotor.set(TalonFXControlMode.PercentOutput, 0.1);
     // m_leftMasterMotor.set(TalonFXControlMode.PercentOutput, -0.1);
   }
@@ -45,16 +43,15 @@ public class Drive extends SubsystemBase {
   }
 
   public void fahren() {
-
-    double forw = _joystick.getRawAxis(1);
+    double forw = -_joystick.getRawAxis(1);
     double turn = _joystick.getRawAxis(0);
 
     forw = deadzone(forw, Constants.Drive.deadzoneY);
     turn = deadzone(turn, Constants.Drive.deadzoneX);
-    System.out.print(forw);
-    System.out.print(turn);
+    System.out.println(forw);
+    System.out.println(turn);
 
-    m_robotDrive.arcadeDrive(turn, forw);
+    m_robotDrive.tankDrive((forw+turn)/2, (forw-turn)/2);
   }
 
   public void doNothing() {

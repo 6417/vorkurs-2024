@@ -23,7 +23,7 @@ public final class Constants {
     public static final int joystickPort = 0;
 
     public static class Motors{
-      // public static final int rechtsVorne = -1;
+      public static final int rechtsVorne = 10;
       public static final int rechtsHinten = 12;
       public static final int linksVorne = 11;
       public static final int linksHinten = 13;
