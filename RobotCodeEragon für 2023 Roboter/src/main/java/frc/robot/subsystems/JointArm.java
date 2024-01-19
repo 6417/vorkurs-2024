@@ -15,13 +15,13 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants;
 
 public class JointArm extends SubsystemBase {
-    private TalonFX armMotorLinks = new TalonFX(Constants.HauptArm.linkerMotor);
-    private TalonFX armMotorRechts = new TalonFX(Constants.HauptArm.rechterMotor);
+    private TalonFX armMotorLinks = new TalonFX(Constants.JointArm.JointLinkerMotor);
+    private TalonFX armMotorRechts = new TalonFX(Constants.JointArm.JointRechterMotor);
     
     Joystick _joystick = new Joystick(Constants.joystickPort);
     /** Creates a new ExampleSubsystem. */
     public JointArm() {
-        armMotorLinks.setControl(new Follower(Constants.HauptArm.rechterMotor, false));
+        armMotorLinks.setControl(new Follower(Constants.JointArm.JointRechterMotor, true));
     }
 
     private double joint_movement = 0.0;

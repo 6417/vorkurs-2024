@@ -32,8 +32,12 @@ public final class Constants {
     public static final int linksHinten = 13;
   }
 
-  public static class HauptArm{
-    public static final int rechterMotor = 22;
-    public static final int linkerMotor = 23;
+  public static class JointArm{
+    public static final int JointRechterMotor = 22;
+    public static final int JointLinkerMotor = 23;
+  }
+  public static class BaseArm{
+    public static final int BaseRechterMotor = 20;
+    public static final int BaseLinkerMotor = 21;
   }
 }

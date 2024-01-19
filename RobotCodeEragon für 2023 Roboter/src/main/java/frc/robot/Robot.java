@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.Drive;
+import frc.robot.subsystems.Griefer;
 import frc.robot.subsystems.JointArm;
 
 
@@ -72,7 +73,8 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {}
 
   Drive drive_subsystem;
-  JointArm hauptArm_subsystem;
+  JointArm jointArm_subsystem;
+  Griefer greifer_subsystem;
 
   @Override
   public void teleopInit() {
@@ -81,7 +83,9 @@ public class Robot extends TimedRobot {
     // continue until interrupted by another command, remove
     // this line or comment it out.
     drive_subsystem = new Drive();
-    hauptArm_subsystem = new JointArm();
+    jointArm_subsystem = new JointArm();
+    greifer_subsystem = new Griefer();
+
 
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
